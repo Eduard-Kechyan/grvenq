@@ -1,23 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import { createMemoryRouter, RouterProvider, Navigate } from "react-router-dom";
+import { io } from "socket.io-client";
+import notify from './utilities/notifications';
 
-function App() {
+import Entry from './pages/entry/Entry';
+import Main from './pages/Main';
+import Welcome from './pages/welcome/Welcome';
+import Test from './pages/test/Test';
+
+import ErrorMessage from './components/error/ErrorMessage';
+
+const socket = io(process.env.REACT_APP_BACKEND_URL);
+
+const router = createMemoryRouter([
+  {
+    path: "/",
+    element: < Entry />,
+  },
+  {
+    path: "/main",
+    element: < Main />,
+    children: [
+      {
+        path: "/main/welcome",
+        element: < Welcome />,
+      },
+      {
+        path: "/main/test",
+        element: < Test socket={socket} />,
+      },
+    ]
+  },
+  {
+    path: "*",
+    element: <Navigate to="/" replace />,
+  },
+]);
+
+notify.init();
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="LayoutWrapper">
+      <RouterProvider router={router} />
+
+      <ErrorMessage />
     </div>
   );
 }

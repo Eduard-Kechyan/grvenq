@@ -1,0 +1,56 @@
+@import '../../variables.scss';
+
+.test {
+    padding: 75px 15px 15px 15px;
+    color: white;
+}
+
+.chatbox {
+    width: 100%;
+    margin: 10px 0;
+    background-color: lighten($color: $dark, $amount: 5);
+    min-height: 300px;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    div {
+        width: 100%;
+        margin: 0 0 5px 0;
+        display: flex;
+        .message {
+            padding: 0 10px;
+            color: $dark;
+            background-color: $blue;
+            border-radius: 5px;
+            font-size: 14px;
+            height: 20px;
+            line-height: 20px;
+            display: inline-block;
+            margin: 0;
+            color: white;
+            span {
+                color: $dark;
+                user-select: none;
+            }
+        }
+        &.user {
+            .message {
+                background-color: $dark;
+                margin: 0 0 0 auto;
+                span {
+                    color: $blue;
+                    user-select: none;
+                }
+            }
+        }
+        &:last-child {
+            margin: 0;
+        }
+    }
+}
+
+.input {
+    width: 100%;
+}

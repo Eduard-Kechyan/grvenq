@@ -1,0 +1,343 @@
+@import '../../variables.scss';
+
+.button_group {
+    display: flex;
+    .button {
+        border-radius: 0;
+        border-right-width: 0;
+        &:first-child {
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+        &:last-child {
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            border-width: 2px;
+        }
+    }
+    &.fluid {
+        width: 100%;
+    }
+}
+
+.button {
+    cursor: pointer;
+    padding: 0 20px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 40px;
+    background-color: rgba(177, 216, 255, 0.3);
+    border: none;
+    color: white;
+    font-size: 16px;
+    transition: 0.3s;
+    user-select: none;
+    position: relative;
+    .tooltip {
+        position: absolute;
+        top: 50px;
+        right: 0;
+        height: 20px;
+        line-height: 20px;
+        font-size: 14px;
+        padding: 0 10px;
+        border-radius: 20px;
+        color: white;
+        background-color: #47566a;
+        box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+        white-space: nowrap;
+        pointer-events: none;
+        transition: 0.3s;
+        z-index: 2;
+        visibility: hidden;
+        opacity: 0;
+        &.left {
+            right: auto;
+            left: 0;
+        }
+    }
+    &:hover {
+        background-color: white;
+        color: #222;
+        .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+    &:active {
+        transform: scale(0.9);
+    }
+    &:focus {
+        outline: none;
+        background-color: rgba(68, 162, 255, 0.3);
+        &:hover {
+            background-color: white;
+        }
+    }
+    &:disabled {
+        pointer-events: none;
+        background-color: transparent;
+        opacity: 0.3;
+    }
+    &.fluid {
+        width: 100%;
+    }
+    &.centre {
+        margin: 0 auto;
+    }
+    &.icon {
+        padding: 0;
+        width: 40px;
+    }
+    &.image {
+        width: 40px;
+        padding: 0;
+        background-color: rgba(177, 216, 255, 0.3);
+        border: 2px solid rgba(177, 216, 255, 0.3);
+        img {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            transition: 0.3s;
+            border-radius: 100%;
+        }
+        .tooltip {
+            top: 48px;
+        }
+        &:hover {
+            border-color: white;
+            img {
+                transform: translate(-50%, -50%) scale(0.9);
+            }
+        }
+        &:focus {
+            border-color: white;
+        }
+    }
+}
+
+.input_label, .search_label {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 0 15px 0;
+    position: relative;
+    transition: 0.3s;
+    .name {
+        position: absolute;
+        top: 12px;
+        left: 15px;
+        height: 20px;
+        line-height: 20px;
+        display: inline-block;
+        font-size: 16px;
+        color: rgb(173, 173, 173);
+        user-select: none;
+        transition: 0.3s;
+        pointer-events: none;
+    }
+    .icon, .req, .clear {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 45px;
+        height: 45px;
+        line-height: 45px;
+        user-select: none;
+        pointer-events: none;
+        color: rgb(173, 173, 173);
+        font-size: 16px;
+        text-align: center;
+    }
+    .req {
+        right: 25px;
+    }
+    .clear {
+        visibility: hidden;
+        opacity: 0;
+        &.show {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+    .err {
+        width: 100%;
+        line-height: 14px;
+        margin: 5px 0 0 0;
+        user-select: none;
+        color: $red;
+        font-size: 12px;
+        z-index: -1;
+        text-align: center;
+        display: inline-block;
+    }
+    input {
+        width: 100%;
+        height: 45px;
+        line-height: 25px;
+        border-radius: 10px;
+        border: none;
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 15px 15px 0 15px;
+        font-size: 16px;
+        color: white;
+        transition: 0.3s;
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        &:focus {
+            outline: none;
+            background-color: rgba(105, 180, 255, 0.3);
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+        }
+    }
+    &:focus-within, &.text {
+        .name {
+            top: 2px;
+            font-size: 12px;
+        }
+    }
+    &.icon {
+        input {
+            padding-right: 45px;
+        }
+    }
+    &.required {
+        input {
+            padding-right: 70px;
+        }
+    }
+    &.error {
+        .req {
+            color: $red;
+        }
+        input {
+            background-color: rgba(255, 149, 149, 0.3);
+            &:focus {
+                background-color: rgba(255, 105, 105, 0.3);
+            }
+        }
+    }
+}
+
+.search_label {
+    margin: 0;
+    .icon {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+    }
+    .clear {
+        top: 5px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        right: 30px;
+        cursor: pointer;
+        pointer-events: unset;
+        font-size: 20px;
+        transition: 0.3s;
+        &:hover {
+            color: white;
+        }
+        &:active {
+            transform: scale(0.9);
+        }
+    }
+    input {
+        height: 40px;
+        line-height: 40px;
+        border-radius: 40px;
+        padding: 0 40px 0 15px;
+    }
+    &.loading {
+        pointer-events: none;
+        opacity: 0.3;
+    }
+}
+
+.checkbox_label {
+    width: 100%;
+    height: 24px;
+    display: flex;
+    margin: 0 0 15px 0;
+    position: relative;
+    transition: 0.3s;
+    cursor: pointer;
+    user-select: none;
+    .checkbox {
+        width: 24px;
+        height: 24px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 5px;
+        transition: 0.3s;
+        margin: 0 10px 0 0;
+        span {
+            transition: 0.3s;
+            visibility: hidden;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            margin-top: 1px;
+            text-align: center;
+            display: inline-block;
+            color: $blue_b;
+        }
+    }
+    .name {
+        height: 24px;
+        line-height: 24px;
+        display: inline-block;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.5);
+        transition: 0.3s;
+        pointer-events: none;
+    }
+    .req {
+        position: absolute;
+        top: 0;
+        right: 11px;
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        pointer-events: none;
+        color: rgb(173, 173, 173);
+        font-size: 16px;
+        text-align: center;
+    }
+    input {
+        height: 0;
+        width: 0;
+        opacity: 0;
+        pointer-events: none;
+    }
+    &:focus-within {
+        .checkbox {
+            border-color: $blue_b;
+        }
+    }
+    &:hover {
+        .checkbox {
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        .name {
+            color: rgba(255, 255, 255, 0.7);
+        }
+    }
+    &:active {
+        .checkbox {
+            transform: scale(0.9);
+        }
+    }
+    &.checked {
+        .checkbox {
+            span {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+    }
+}

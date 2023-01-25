@@ -1,0 +1,60 @@
+@import './variables.scss';
+
+@mixin bordered() {
+    background: white;
+    border - radius: 10px;
+    box - shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.12);
+    padding: 10px;
+    color: $sepia_light;
+}
+
+@mixin button() {
+    background - color: $sepia_light;
+    border - radius: 10px;
+    color: white;
+    height: 30px;
+    line - height: 30px;
+    display: inline - block;
+    padding: 0 10px;
+    font - size: 16px;
+    border: none;
+    transition: 0.3s;
+    cursor: pointer;
+    text - decoration: none;
+    span {
+        margin: 0 10px 0 0;
+    }
+    &.icon {
+        span {
+            margin: 0;
+        }
+    }
+    &:hover {
+        background - color: $sepia_dark;
+    }
+    &:active {
+        transform: scale(0.9);
+    }
+}
+@mixin dark() {
+    background - color: $dark;
+    box - shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
+    .title {
+        color: lighten($color: $sepia_light, $amount: 20);
+    }
+}
+
+@mixin buttonDark() {
+    background - color: lighten($color: $dark, $amount: 5);
+    color: rgb(228, 228, 228);
+    &: hover, &.active {
+        background - color: lighten($color: $dark, $amount: 15);
+    }
+}
+
+@mixin buttonDarkDisabled() {
+    &:disabled {
+        background - color: lighten($color: $dark, $amount: 25);
+        color: rgb(168, 168, 168);
+    }
+}

@@ -1,0 +1,215 @@
+@import-normalize;
+@import './variables.scss';
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./assets/fonts/Roboto.ttf');
+}
+
+@font-face {
+  font-family: 'Pacifico';
+  src: url('./assets/fonts/Pacifico.ttf');
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('./assets/fonts/Quicksand.ttf');
+}
+
+@font-face {
+  font-family: 'Solitreo';
+  src: url('./assets/fonts/Solitreo.ttf');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Quicksand, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: unset;
+  overflow: hidden;
+}
+
+a {
+  text-decoration: unset;
+  &:hover {
+    text-decoration: unset;
+  }
+  &:focus {
+    outline: none;
+    text-decoration: underline;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  &::selection {
+    color: white;
+    background-color: $blue_b;
+  }
+}
+
+//Loader
+.loadera {
+  background: url(./assets/images/loader.png);
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  width: 20px;
+  height: 20px;
+  margin: 0 auto;
+  filter: invert(100%);
+  animation: fade 3s ease-in-out infinite;
+  @keyframes fade {
+    0% {
+      opacity: 0;
+      transform: translate(-15px, 0);
+    }
+    25% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+      transform: translate(15px, 0);
+    }
+    51% {
+      opacity: 0;
+      transform: translate(15px, 0) scaleX(-1);
+    }
+    75% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-15px, 0) scaleX(-1);
+    }
+  }
+}
+
+.loader {
+  font-size: 1.4rem;
+  font-family: Pacifico, sans-serif;
+  color: white;
+  user-select: none;
+  pointer-events: none;
+  span {
+    opacity: 0;
+    animation: flow 4s ease-in-out infinite;
+    &:nth-child(2) {
+      animation-delay: 0.5s;
+    }
+    &:nth-child(3) {
+      animation-delay: 1s;
+    }
+    &:nth-child(4) {
+      animation-delay: 1.5s;
+    }
+    &:nth-child(5) {
+      animation-delay: 2s;
+    }
+    &:nth-child(6) {
+      animation-delay: 2.5s;
+    }
+    &:nth-child(7) {
+      animation-delay: 3s;
+    }
+  }
+  &.dark {
+    color: $dark;
+    animation: flowDark 4s ease-in-out infinite;
+  }
+  @keyframes flow {
+    0% {
+      opacity: 0;
+    }
+    12.5% {
+      opacity: 1;
+    }
+    37.5% {
+      opacity: 0;
+    }
+  }
+  @keyframes dark {
+    0% {
+      opacity: 0;
+    }
+    12.5% {
+      opacity: 1;
+    }
+    37.5% {
+      opacity: 0;
+    }
+  }
+}
+
+#LayoutWrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: url("./assets/images/login_box_background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1920px 1080px;
+  padding: 20px;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    background: rgb(0, 91, 109);
+    background: linear-gradient(70deg, rgb(9, 9, 92) 0%, rgb(0, 91, 109) 100%);
+    opacity: 0.7;
+  }
+  @media only screen and (max-width: 1010px) {
+    padding: 0;
+    #LayoutContainer {
+      border-radius: 0;
+      height: 100%;
+    }
+  }
+}
+
+#LayoutContainer {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  height: calc(100% - 15px);
+  margin: 0 auto;
+  background-color: $dark;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.5);
+  .nav_toggler {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 14;
+    &.mobile {
+      left: -100px;
+      &.show {
+        left: 15px;
+      }
+    }
+  }
+}
+
+#LayoutContent {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: 0.5s;
+  z-index: 10;
+  &.nav_open {
+    left: 340px;
+    &.mobile {
+      left: 0;
+    }
+  }
+}
