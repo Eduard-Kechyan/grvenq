@@ -5,7 +5,7 @@ import Axios from "axios";
 import utilites from './utilites';
 
 const axios_instance = Axios.create({
-    baseURL: "https://grvenq-backend.onrender.com:7014"
+    baseURL: "https://grvenq-backend.onrender.com/"
 });
 
 const axios = {
