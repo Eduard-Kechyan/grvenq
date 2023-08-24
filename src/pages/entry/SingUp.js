@@ -89,6 +89,7 @@ const SingUp = (props) => {
                 .catch(err => {
                     if (err.message.includes('email')) {
                         setEmailError(t("validate.email.exists"));
+                        console.log("A");
                     }
 
                     if (err.message.includes('name')) {
