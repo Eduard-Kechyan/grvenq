@@ -1,0 +1,97 @@
+@import "../../../variables.scss";
+
+.chats {
+    width: 100%;
+    height: calc(100% - 74px);
+    padding: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    .loader {
+        width: 100%;
+        text-align: center;
+        margin: 50px 0;
+    }
+    &::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+    &::-webkit-scrollbar-button {
+        height: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: $dark;
+        border-radius: 10px;
+        &:hover {
+            background: lighten($color: $dark, $amount: 10);
+        }
+        &:active {
+            background: $dark;
+        }
+    }
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+}
+
+.empty {
+    width: 100%;
+    margin: 0;
+    font-size: 14px;
+    padding: 15px;
+    user-select: none;
+    color: rgb(134, 161, 197);
+    text-align: center;
+}
+
+.chat_user_item {
+    width: 100%;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    margin: 0 0 10px 0;
+    display: flex;
+    background-color: $dark;
+    border-radius: 10px;
+    user-select: none;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+    .pic {
+        height: 50px;
+        width: 50px;
+        border-radius: 50px;
+        overflow: hidden;
+        img {
+            width: 100%;
+        }
+    }
+    .name {
+        height: 50px;
+        line-height: 50px;
+        display: inline-block;
+        padding: 0 0 0 10px;
+        font-size: 16px;
+        color: white;
+    }
+    &.selected {
+        background-color: lighten($color: $dark, $amount: 15);
+        pointer-events: none;
+    }
+    &:hover {
+        background-color: lighten($color: $dark, $amount: 5);
+    }
+    &:active {
+        transform: scale(0.9);
+    }
+    &:focus {
+        outline: none;
+        text-decoration: none;
+        background-color: lighten($color: $dark, $amount: 10);
+        &:hover {
+            background-color: lighten($color: $dark, $amount: 15);
+        }
+    }
+    &:last-child {
+        margin: 0;
+    }
+}

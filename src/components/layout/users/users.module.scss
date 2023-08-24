@@ -1,0 +1,112 @@
+@import "../../../variables.scss";
+
+.users {
+    width: 100%;
+    height: calc(100% - 74px);
+    .loader {
+        width: 100%;
+        text-align: center;
+        margin: 50px 0;
+    }
+}
+
+.users_search {
+    height: 0;
+    width: 100%;
+    padding: 0 15px;
+    overflow: hidden;
+    border-bottom: 0 solid rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
+    label {
+        width: 100%;
+    }
+    &.adding {
+        height: 74px;
+        padding: 15px 15px 17px 15px;
+        border-width: 2px;
+    }
+}
+
+.users_box {
+    width: 100%;
+    height: calc(100% - 146px);
+    padding: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+    &::-webkit-scrollbar-button {
+        height: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: $dark;
+        border-radius: 10px;
+        &:hover {
+            background: lighten($color: $dark, $amount: 10);
+        }
+        &:active {
+            background: $dark;
+        }
+    }
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+}
+
+.user_item {
+    width: 100%;
+    padding: 10px;
+    margin: 0 0 10px 0;
+    display: flex;
+    background-color: $dark;
+    border-radius: 10px;
+    user-select: none;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+    .pic {
+        height: 50px;
+        width: 50px;
+        border-radius: 50px;
+        overflow: hidden;
+        img {
+            width: 100%;
+        }
+    }
+    .name {
+        height: 50px;
+        line-height: 50px;
+        display: inline-block;
+        padding: 0 0 0 10px;
+        font-size: 16px;
+        color: white;
+    }
+    &:hover {
+        background-color: lighten($color: $dark, $amount: 5);
+    }
+    &:active {
+        transform: scale(0.9);
+    }
+    &:focus {
+        outline: none;
+        background-color: lighten($color: $dark, $amount: 10);
+        &:hover {
+            background-color: lighten($color: $dark, $amount: 15);
+        }
+    }
+    &:last-child {
+        margin: 0;
+    }
+}
+
+.empty {
+    width: 100%;
+    margin: 0;
+    font-size: 14px;
+    padding: 15px;
+    user-select: none;
+    color: rgb(134, 161, 197);
+    text-align: center;
+}

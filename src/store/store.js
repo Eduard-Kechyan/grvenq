@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import errorReducer from './errorSlice';
+import mainSlice from './mainSlice';
 
 export default configureStore({
     reducer: {
-        error: errorReducer
+        main: mainSlice
     },
 });

@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { setError } from '../../store/errorSlice';
+import { setError } from '../../store/mainSlice';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from './error.module.scss';
 
 const ErrorMessage = () => {
-    const source = useSelector((state) => state.error.source);
-    const message = useSelector((state) => state.error.message);
+    const error = useSelector((state) => state.main.error);
     const [show, setShow] = useState(false);
-
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (show === false && source !== '') {
+        if (show === false && error !== '') {
             setShow(true);
 
             setTimeout(() => {
@@ -20,13 +18,13 @@ const ErrorMessage = () => {
             }, 60000);
         }
         //eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [source])
+    }, [error])
 
     const clearError = () => {
         setShow(false);
 
         setTimeout(() => {
-            dispatch(setError({ source: '', message: '' }));
+            dispatch(setError(''));
         }, 400)
     }
 
@@ -34,7 +32,7 @@ const ErrorMessage = () => {
         <div id={styles.ErrorMessage} className={show ? styles.show : null}>
             {/* Source */}
             <div className={styles.source}>
-                {source}
+                An error occurred!
 
                 {/* Close */}
                 <span className={styles.close} onClick={clearError}>
@@ -44,7 +42,7 @@ const ErrorMessage = () => {
 
             {/* Message */}
             <div className={styles.message}>
-                {message}
+                {error}
             </div>
         </div>
     );

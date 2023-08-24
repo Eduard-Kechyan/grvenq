@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from './form.module.scss';
 
-const Input = (props) => {
+const Input = forwardRef((props, ref) => {
     return (
         <label className={[
             styles.search_label,
@@ -14,12 +14,7 @@ const Input = (props) => {
                 {props.name}
             </span>
 
-            {/* Icon */}
-            {<span className={styles.icon}>
-                <FontAwesomeIcon icon={['fas', 'magnifying-glass']} />
-            </span>}
-
-            {/* Icon */}
+            {/* Clear */}
             {props.clearable !== undefined &&
                 <span className={[styles.clear, props.value !== '' ? styles.show : null].join(' ')}
                     onClick={() => props.handleChange('')}>
@@ -29,11 +24,12 @@ const Input = (props) => {
             {/* Input */}
             <input
                 type="text"
+                ref={ref}
                 placeholder={props.loading ? 'Loading...' : 'Search...'}
                 value={props.value}
                 onChange={event => props.handleChange(event.target.value)} />
         </label>
     );
-};
+});
 
 export default Input;

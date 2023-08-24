@@ -1,0 +1,96 @@
+@import '../../variables.scss';
+
+#Modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: 0.3s;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 3000;
+    pointer-events: none;
+    &.open {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: unset;
+    }
+}
+
+.modal_backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    transition: .3s;
+}
+
+.model_content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none;
+    width: 100%;
+    max-width: 500px;
+    min-height: 100px;
+    padding: 0;
+    z-index: 1;
+}
+
+.modal_title {
+    width: 100%;
+    margin: 0;
+    font-size: 16px;
+    color: white;
+    font-weight: normal;
+    padding: 0 25px 0 10px;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: relative;
+    span {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        transition: 0.3s;
+        cursor: pointer;
+        color: white;
+        height: 20px;
+        line-height: 20px;
+        font-size: 24px;
+        &:hover {
+            color: $red;
+        }
+        &:active {
+            transform: scale(0.8);
+        }
+    }
+}
+
+.model_body {
+    padding: 10px;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    p {
+        width: 100%;
+        margin: 20px 0 50px 0;
+        font-style: 14px;
+    }
+    button {
+        &.cancel {
+            margin: 0 0 0 10px;
+            background-color: $red;
+            &:hover {
+                background-color: darken($color: $red, $amount: 15);
+            }
+        }
+    }
+}

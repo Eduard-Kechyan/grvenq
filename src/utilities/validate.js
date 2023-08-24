@@ -20,15 +20,10 @@ const validate = {
             return t('validate.name.long')
         }
 
-        // Check if exists
-        if (false) { // TODO
-            return t('validate.name.exists')
-        }
-
         // Valid name
         return '';
     },
-    email: (email, t, unique) => {
+    email: (email, t) => {
         // Empty
         if (email === '') {
             return t('validate.email.req')
@@ -39,15 +34,6 @@ const validate = {
             /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         )) {
             return t('validate.email.invalid')
-        }
-
-        // Check if exists
-        if (false) { // TODO
-            return t('validate.email.exists')
-        } else {
-            if (unique !== undefined) {
-                return t('validate.email.non_existent')
-            }
         }
 
         // Valid email

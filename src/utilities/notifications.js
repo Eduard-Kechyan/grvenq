@@ -1,4 +1,4 @@
-import defaultIcon from '../assets/images/logo512.png';
+import defaultIcon from '../assets/images/notification_icon.png';
 
 let notification = null;
 

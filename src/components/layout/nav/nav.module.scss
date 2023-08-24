@@ -1,0 +1,44 @@
+@import "../../../variables.scss";
+
+nav {
+    position: relative;
+    left: -340px;
+    width: 340px;
+    height: 100%;
+    background-color: darken($color: $dark, $amount: 7);
+    border-right: 2px solid rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: 0.5s;
+    z-index: 12;
+    &.open {
+        left: 0;
+    }
+    &.mobile {
+        width: 100%;
+        left: -100%;
+        .nav_head {
+            padding: 15px;
+            button {
+                &:first-child {
+                    margin: 0 auto 0 0;
+                }
+            }
+        }
+        &.open {
+            left: 0;
+        }
+    }
+}
+
+.nav_head {
+    height: 72px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+    padding: 15px 15px 15px 68px;
+    display: flex;
+    button {
+        margin: 0 0 0 10px;
+        &:first-child {
+            margin: 0 0 0 auto;
+        }
+    }
+}

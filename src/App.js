@@ -6,10 +6,11 @@ import Entry from './pages/entry/Entry';
 import Main from './pages/Main';
 import Welcome from './pages/welcome/Welcome';
 import Test from './pages/test/Test';
+import Chat from './pages/chat/Chat';
 
 import ErrorMessage from './components/error/ErrorMessage';
 
-const socket = io(process.env.REACT_APP_BACKEND_URL);
+const socket = io(process.env.REACT_APP_SERVER_URL);
 
 const router = createMemoryRouter([
   {
@@ -18,11 +19,15 @@ const router = createMemoryRouter([
   },
   {
     path: "/main",
-    element: < Main />,
+    element: < Main socket={socket} />,
     children: [
       {
         path: "/main/welcome",
         element: < Welcome />,
+      },
+      {
+        path: "/main/chat/:_id",
+        element: < Chat socket={socket} />,
       },
       {
         path: "/main/test",

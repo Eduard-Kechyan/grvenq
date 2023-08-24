@@ -7,18 +7,41 @@
         "options": {
             "profile": "Profile",
             "new_chat": "New Chat",
+            "cancel": "Cancel",
             "settings": "Settings",
             "sign_out": "Sign Out"
-        },
-        "empty": "Search at the top to start a chat"
+        }
+    },
+    "chats": {
+        "empty": "Click the plus sign to start a chat",
+        "empty_mobile": "Tap the plus sign to start a chat"
+    },
+    "chat": {
+        "attach": {
+            "camera": "Camera",
+            "image": "Image",
+            "file": "File"
+        }
+    },
+    "users": {
+        "search": "Search for users to chat with",
+        "search_not_found": "No users found"
+    },
+    "settings": {
+        "title": "Settings"
+    },
+    "profile": {
+        "title": "Profile"
     },
     "entry": {
         "log_in": "Log In",
         "log_in_text": "Log in to your account",
         "log_in_question": "Don't have an account?",
+        "log_in_quick": "Quick Log In",
         "sing_up": "Sing Up",
         "sign_up_text": "Create a free acount",
         "sign_up_question": "Already have an account?",
+        "sing_up_quick": "Quick Sing Up",
         "name": "Name",
         "email": "Email",
         "password": "Password",
@@ -42,7 +65,8 @@
             "req": "Password is required",
             "short": "Password must be at least 8 characters long",
             "long": "Password must be less than 20 characters long",
-            "special": "Password must contain at least one special character"
+            "special": "Password must contain at least one special character",
+            "wrong": "Wrong password"
         }
     },
     "other": {

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useTranslation } from "react-i18next";
 import styles from "./welcome.module.scss";
 
-const Welcome = () => {
+const Welcome = memo(() => {
     const { t } = useTranslation();
 
     return (
@@ -11,6 +11,6 @@ const Welcome = () => {
             <h3 className={styles.subtitle}>{t("other.welcome")}</h3>
         </div>
     );
-};
+});
 
 export default Welcome;

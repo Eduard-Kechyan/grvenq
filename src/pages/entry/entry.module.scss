@@ -1,6 +1,6 @@
 @import '../../variables.scss';
 
-#LoginContainer {
+#EntryContainer {
     position: absolute;
     top: 0;
     right: 0;
@@ -8,7 +8,7 @@
     left: 0;
     z-index: 5;
     &.loading {
-        .login_title {
+        .entry_title {
             top: 50%;
             transform: translate(-50%, -50%);
             transition: 1s;
@@ -28,7 +28,7 @@
                 }
             }
         }
-        .login_box {
+        .entry_box {
             top: 100%;
             visibility: hidden;
             opacity: 0;
@@ -37,7 +37,7 @@
     }
 }
 
-.login_title {
+.entry_title {
     position: absolute;
     top: 0;
     left: 50%;
@@ -71,7 +71,7 @@
     }
 }
 
-.login_box {
+.entry_box {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -142,8 +142,12 @@
     }
 }
 
+.entry_loader {
+    text-align: center;
+    margin: auto 0;
+}
 
-.login_form {
+.entry_form {
     width: 100%;
     display: flex;
     flex-wrap: wrap;

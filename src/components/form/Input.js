@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from './form.module.scss';
 
 const Input = (props) => {
+    const [show, setShow] = useState(false);
+
     return (
         <label className={[
             styles.input_label,
@@ -10,11 +12,22 @@ const Input = (props) => {
             props.icon !== undefined ? styles.icon : null,
             props.error !== undefined && props.error !== '' ? styles.error : null,
             props.required ? styles.required : null,
+            props.type === "password" ? styles.password : null,
         ].join(' ')}>
             {/* Name */}
             <span className={styles.name}>
                 {props.name}
             </span>
+
+            {props.type === "password" &&
+                <span className={styles.show_password} onClick={() => setShow(!show)}>
+                    {show ?
+                        <FontAwesomeIcon icon={['fas', "eye-slash"]} />
+                        :
+                        <FontAwesomeIcon icon={['fas', "eye"]} />
+                    }
+                </span>
+            }
 
             {/* Required */}
             {props.required && <span className={styles.req}>
@@ -28,9 +41,11 @@ const Input = (props) => {
 
             {/* Input */}
             <input
-                type={props.type === undefined ? "text" : props.type}
+                type={
+                    props.type === "password" ? show ? "text" : "password" : props.type
+                }
+                formNoValidate={props.type === 'email'}
                 value={props.value}
-                onBlur={() => props.onBlur !== undefined && props.onBlur(props.property)}
                 onChange={event => props.handleChange(props.property, event.target.value)} />
 
             {/* Error text */}

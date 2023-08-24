@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './form.module.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { isBrowser } from 'react-device-detect';
 
 const Button = (props) => {
     return (
@@ -22,7 +23,7 @@ const Button = (props) => {
                 props.content
             }
 
-            {props.tooltip && <span className={[styles.tooltip, props.left ? styles.left : null].join(' ')} >
+            {props.tooltip && isBrowser && <span className={[styles.tooltip, props.left ? styles.left : null].join(' ')} >
                 {props.tooltip}
             </span>}
         </button>
